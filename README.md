@@ -39,3 +39,5 @@ All praise and thanks to:
 * https://favicon.io/emoji-favicons/light-bulb: the light bulb favicon
 * https://11ty.dev: amazing static site generator
 * https://tailwindcss.com: the utility css for rapid development
+* https://statically.io: best easy to use cdn made in jogja
+* https://pages.dev: host free static site with unlimited bandwith
