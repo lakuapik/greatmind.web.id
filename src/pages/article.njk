@@ -1,0 +1,54 @@
+---
+pagination:
+  size: 1
+  data: collections.article
+  alias: article
+permalink: "artikel/{{ article.slug }}/"
+renderData:
+  title: "{{ article.title | safe }}"
+  description: "{{ article.excerpt | safe }}"
+eleventyExcludeFromCollections: true
+---
+
+{% extends './../layouts/app.njk' %}
+
+{% block before_head %}
+ <link rel="canonical" href="{{ article.url }}" />
+{% endblock %}
+
+{% block main %}
+  <article class="max-w-screen-md mx-auto mt-3 mb-16 overflow-hidden lg:mt-14 md:mt-8">
+    <header>
+      <h1 class="w-full max-w-screen-md mb-8 text-3xl font-extrabold lg:text-6xl md:text-5xl sm:text-4xl lg:mb-10 leading-tighter">
+        {{ article.title }}
+      </h1>
+      <div class="inline-flex items-center space-x-4">
+        <img class="rounded-full" src="{{ article.author_avatar | staticallyImg(128) }}" width="72" height="72" alt="Foto penulis">
+        <div>
+          <p class="-mt-1"><strong>{{ article.author_name }}</strong></p>
+          <p class="-mt-1 text-sm text-gray-700 dark:text-gray-300">{{ article.author_desc }}</p>
+          <p class="mt-1 text-sm">
+            {{ article.date | dateDMY }}
+            &nbsp; • &nbsp; {{ article.content | readTime }}
+          </p>
+        </div>
+      </div>
+      <div class="mt-4 text-sm">
+        {# TODO: implement article by category or topic #}
+        <span class="px-3 py-1 bg-gray-200 rounded-full dark:bg-gray-800">
+          {{ article.category }}
+        </span>
+        <span class="px-3 py-1 ml-2 bg-gray-200 rounded-full dark:bg-gray-800">
+          {{ article.topic }}
+        </span>
+      </div>
+      {% if not article.hasIframe %}
+        <img width="100%" height="auto" class="w-full mt-10 rounded-lg"
+          src="{{ article.cover | staticallyImg }}" alt="Gambar cover">
+      {% endif %}
+    </header>
+    <main id="content" class="mt-10 prose dark:prose-dark sm:prose-lg lg:prose-xl">
+      {{ article.content | safe }}
+    </main>
+  </article>
+{% endblock %}

@@ -1,0 +1,40 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:cc="http://cyber.law.harvard.edu/rss/creativeCommonsRssModule.html">
+  <channel>
+    <title><![CDATA[{{ config.app.domain }}]]></title>
+    <description><![CDATA[{{ config.app.desc }}]]></description>
+    <link>https://{{ config.app.domain }}/</link>
+    <dc:language>id-ID</dc:language>
+    <image>
+      <url>https://{{ config.app.domain }}/img/android-chrome-512x512.png</url>
+      <title>{{ config.app.name }}</title>
+      <link>https://{{ config.app.domain }}/</link>
+    </image>
+    <generator>{{ config.app.name }}</generator>
+    <lastBuildDate>{{ collections.feed_article[0].date | dateRfc3339 }}</lastBuildDate>
+    <atom:link href="https://{{ config.app.domain }}/feed" rel="self" type="application/rss+xml"/>
+    <webMaster><![CDATA[{{ config.app.email }}]]></webMaster>
+    {% for article in collections.feed_article %}
+      <item>
+        <title>{{ article.title }}</title>
+        <link>https://{{ config.app.domain }}/artikel/{{ article.slug }}/</link>
+        <guid isPermaLink="false">https://{{ config.app.domain }}/artikel/{{ article.slug }}/</guid>
+        <category><![CDATA[{{ article.category }}]]></category>
+        <category><![CDATA[{{ article.topic }}]]></category>
+        <dc:creator><![CDATA[{{ article.author_name }}]]></dc:creator>
+        <pubDate>{{ article.date | dateRfc3339 }}</pubDate>
+        <atom:updated>{{ article.date | dateRfc3339 }}</atom:updated>
+        <description><![CDATA[<p>{{ article.excerpt }}</p>]]></description>
+        <content:encoded><![CDATA[{{ article.content | safe }}]]></content:encoded>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

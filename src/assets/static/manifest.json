@@ -1,0 +1,24 @@
+{
+  "name": "Greatmind Mirror",
+  "display": "fullscreen",
+  "start_url": "/",
+  "short_name": "Greatmind",
+  "theme_color": "#111827",
+  "description": "Mirror dari situs greatmind.id dengan teknologi terbarukan, cepat sekilat petir.",
+  "orientation": "portrait",
+  "background_color": "#111827",
+  "icons": [
+    {
+      "src": "/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

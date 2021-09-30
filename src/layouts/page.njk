@@ -1,0 +1,13 @@
+{% extends './app.njk' %}
+
+{% block main %}
+
+  <h1 class="mt-8 text-2xl font-bold text-center md:text-4xl">
+    {{ renderData.title or title }}
+  </h1>
+
+  <article class="max-w-screen-md mx-auto mt-8 mb-16 prose dark:prose-dark sm:prose-lg lg:prose-xl lg:mt-14 md:mt-8">
+    {{ content | safe }}
+  </article>
+
+{% endblock %}

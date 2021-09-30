@@ -1,0 +1,99 @@
+---
+layout: app
+pagination:
+  size: 8
+  data: collections.article
+  alias: articles
+permalink: "daftar-artikel/halaman-{{ pagination.pageNumber + 1 }}/"
+renderData:
+  title: "Daftar Artikel Halaman {{ pagination.pageNumber + 1 }}"
+  description: "Daftar artikel halaman {{ pagination.pageNumber + 1 }}"
+eleventyExcludeFromCollections: true
+---
+
+<h1 class="pb-8 text-2xl font-bold text-center md:text-4xl">
+  Daftar Artikel
+</h1>
+
+<div class="max-w-screen-md mx-auto">
+
+  {% for article in articles %}
+    <div class="flex flex-col items-center p-5 my-5 space-x-0 space-y-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:text-gray-200 sm:flex-row sm:space-x-5 sm:space-y-0 sm:text-left">
+      <a class="flex-shrink-0 block w-full sm:w-36" href="/artikel/{{ article.slug }}">
+        <img class="object-cover mx-auto rounded-md sm:h-28"
+          src="{{ article.cover | staticallyImg(576) }}" alt="{{ article.title }}">
+      </a>
+      <div>
+        <a class="hover:text-blue-600 dark:hover:text-blue-300" href="/artikel/{{ article.slug }}">
+          <h2 class="pt-2 text-lg font-bold leading-tighter">
+            {{ article.title }}
+          </h2>
+          <div class="pt-1 pb-2 text-xs text-gray-600 dark:text-gray-300">
+            {{ article.author_name }}
+            • {{ article.date | dateDMY }}
+            • {{ article.content | readTime }}
+          </div>
+          {# <div class="pt-1 pb-2 text-xs text-gray-600 dark:text-gray-300">
+            {{ article.category }} - {{ article.topic }}
+          </div> #}
+          <div class="prose-sm prose text-left dark:prose-dark dark:prose-dark-sm max-w-none">
+            <p>{{ article.excerpt | truncate(150) }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="flex-wrap items-center justify-between mt-3 text-center sm:text-left sm:flex">
+    <div class="mt-5">
+      Menampilkan
+      {% set pgCurrent = pagination.pageNumber + 1 %}
+      {% set pgSize = pagination.size %}
+      {% set pgLength = collections.article.length %}
+      {% set pgLast = ((pgLength/pgSize) | ceil) %}
+      <span class="font-medium">{{ ((pgCurrent - 1) * pgSize) + 1 }}</span>
+      -
+      <span class="font-medium">{{ l if (pgCurrent == pgLast) else (pgCurrent * pgSize) }}</span>
+      dari
+      <span class="font-medium">{{ pgLength }}</span>
+      hasil.
+    </div>
+    <nav class="mt-5" aria-labelledby="Pagination">
+      {# <a class="px-2 py-2 -ml-1 border rounded-l-md" href="#">&lt;&lt;</a> #}
+      {% if pgCurrent > 1 %}
+        <a class="px-3 py-2 -ml-1 border"
+          {% if pagination.href.previous %} href="{{ pagination.href.previous }}" {% endif %}
+        >&lt;</a>
+      {% endif %}
+      {% if pgCurrent > 2 %}
+        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-1">1</a>
+        <a class="px-3 py-2 -ml-1 border" disabled>...</a>
+      {% endif %}
+      {%- for pageEntry in pagination.pages %}
+        {# bear with me, i am the x #}
+        {% set x = pgLast - 4 if pgLast - pgCurrent <= 3 else pgCurrent %}
+        {% if loop.index < pgCurrent + 4 and loop.index >= x %}
+          <a href="{{ pagination.hrefs[ loop.index0 ] }}"
+            {% if page.url == pagination.hrefs[ loop.index0 ] %}
+              aria-current="page" class="px-3 py-2 -ml-1 font-bold border-2"
+            {% else %}
+              class="px-3 py-2 -ml-1 border"
+            {% endif %}
+          >{{ loop.index }}</a>
+        {% endif %}
+      {%- endfor %}
+      {% if (pgLast - pgCurrent) > 4 %}
+        <a class="px-3 py-2 -ml-1 border" disabled>...</a>
+      {% endif %}
+      {% if (pgLast - pgCurrent) > 3 %}
+        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-{{ pgLast }}">{{ pgLast }}</a>
+      {% endif %}
+      {% if pgCurrent != pgLast %}
+        <a class="px-3 py-2 -ml-1 border"
+          {% if pagination.href.next %} href="{{ pagination.href.next }}" {% endif %}
+        >&gt;</a>
+      {% endif %}
+    </nav>
+  </div>
+
+</div>

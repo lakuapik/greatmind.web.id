@@ -1,0 +1,32 @@
+---
+layout: app
+title: Hi
+---
+
+<h1 class="pb-8 text-2xl font-bold text-center md:text-4xl">
+  Artikel Terbaru
+</h1>
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {% for article in collections.latest_article %}
+    <div class="col-span-3 p-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:text-gray-200 sm:col-span-1">
+      <a href="/artikel/{{ article.slug }}">
+        <img class="mx-auto mb-4 rounded-lg" width="380" height="220" src="{{ article.cover | staticallyImg(576) }}" alt="{{ article.title }}">
+        <h2 class="py-3 text-lg font-bold leading-tighter hover:text-blue-700">
+          {{ article.title }}
+        </h2>
+      </a>
+      <div class="mt-1 mb-2 text-xs text-gray-600 dark:text-gray-300">
+        {{ article.author_name }}
+        • {{ article.date | dateDMY }}
+        • {{ article.content | readTime }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="my-8 text-center">
+  <a class="px-3 py-2 text-base font-medium text-blue-600 transition duration-150 ease-in-out rounded-lg hover:bg-gray-200 dark:text-blue-400 dark:hover:bg-gray-800" href="/daftar-artikel">
+    Lihat semua artikel →
+  </a>
+</div>

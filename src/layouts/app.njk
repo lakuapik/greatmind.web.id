@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827"/>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
+    <link rel="stylesheet" href="{{ '/css/app.css' | assetUrl }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link rel="preload" href="https://fonts.gstatic.com/s/cantarell/v10/B50NF7ZDq37KMUvlO015jKJr.woff2" as="font" type="font/woff2">
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ config.app.title }} feed" />
+    {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cantarell&display=swap"> #}
+    <link rel="manifest" href="/manifest.json">
+    <title>{{ config.app.name }} - {{ title or renderData.title }}</title>
+    {# SEO #}
+    <meta name="robots" content="index, follow" />
+    <meta name="title" content="{{ (title or renderData.title or config.app.title) }}">
+    <meta name="description" content="{{ (description or renderData.description or config.app.desc) }}">
+    <meta property="og:title" content="{{ (title or renderData.title or config.app.title) }}"/>
+    <meta property="og:description" content="{{ (description or renderData.description or config.app.desc) }}" />
+    <meta property="og:url" content="{{ page.url }}" />
+    <meta property="og:image" content="/img/favicon-96x96.png" />
+    {# END SEO #}
+    {% block before_head %} {% endblock %}
+  </head>
+  <body class="text-black bg-white dark:bg-gray-900 dark:text-gray-200">
+    {% include 'header.njk' %}
+    <main class="w-full max-w-screen-xl px-4 mx-auto mt-8">
+      {% block main %} {{ content | safe }} {% endblock %}
+    </main>
+    {% include 'footer.njk' %}
+    <script defer src="{{ '/js/app.js' | assetUrl }}"></script>
+    <script defer src="https://cdn.statically.io/libs/alpinejs/3.4.0/cdn.min.js"></script>
+    <script async data-goatcounter="https://greatmind-mirror.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

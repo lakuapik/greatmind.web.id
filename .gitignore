@@ -1,0 +1,4 @@
+*.bak
+*.env
+docs/
+node_modules/
