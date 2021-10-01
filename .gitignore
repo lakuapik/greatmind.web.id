@@ -1,4 +1,5 @@
 *.bak
 *.env
+dev/
 docs/
 node_modules/

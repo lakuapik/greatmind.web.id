@@ -1,10 +1,18 @@
 const fs = require('fs');
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc')
 const sqlite = require('better-sqlite3');
 const htmlmin = require('html-minifier');
+const timezone = require('dayjs/plugin/timezone')
 const UserConfig = require('@11ty/eleventy/src/UserConfig');
 const readingTime = require('./src/helper/readingTime');
 const transformArticles = require('./src/helper/transformArticles');
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const tz = 'Asia/Jakarta';
+const now = dayjs().tz(tz).format('YYYY-MM-DD HH:mm');
 
 /**
  * @param {UserConfig} e11
@@ -26,9 +34,11 @@ module.exports = (e11) => {
     return content;
   });
 
-  e11.addFilter('dateDMY', (val) => dayjs(val).format('D MMM YYYY'));
+  e11.addShortcode('lastUpdate', () => now);
 
-  e11.addFilter('dateRfc3339', (val) => dayjs(val).format('YYYY-MM-DDTHH:mm:ssZ'));
+  e11.addFilter('dateDMY', (val) => dayjs(val).tz(tz).format('D MMM YYYY'));
+
+  e11.addFilter('dateRfc3339', (val) => dayjs(val).tz(tz).format('YYYY-MM-DDTHH:mm:ssZ'));
 
   e11.addFilter('readTime', (val) => readingTime(val, { speed: 200 }));
 
@@ -76,13 +86,12 @@ module.exports = (e11) => {
   });
 
   e11.on('afterBuild', () => {
-    fs.copyFileSync(
-      'docs/daftar-artikel/halaman-1/index.html',
-      'docs/daftar-artikel/index.html'
-    );
+    fs.copyFileSync('docs/daftar-artikel/halaman-1/index.html', 'docs/daftar-artikel/index.html');
     fs.copyFileSync('docs/rss.xml', 'docs/rss');
     fs.copyFileSync('docs/rss.xml', 'docs/feed');
     fs.copyFileSync('docs/rss.xml', 'docs/feed.xml');
+    if (!fs.existsSync('docs/artikel/acak')) fs.mkdirSync('docs/artikel/acak');
+    fs.copyFileSync('docs/acak/index.html', 'docs/artikel/acak/index.html');
   });
 
   return {

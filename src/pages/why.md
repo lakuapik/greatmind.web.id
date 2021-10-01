@@ -15,13 +15,13 @@ Situsnya ketika diakses terasa **SANGAT LEMOT**. <br>
 Sumpah bikin **KESEL!!**
 
 Dibawah ini merupakan hasil tes kecepatan situs yang aku ambil
-tanggal 29 Oktober 2021. Semoga sekarang sudah diperbaiki. *Berharap.
+tanggal 29 September 2021. Semoga sekarang sudah diperbaiki. *Berharap.
 
 <img loading="lazy" class="rounded" src="/img/pagespeed-test-greatmind.id.webp" alt="Hasil tes pagespeed">
 
 Lihat aja, skornya hanya **7** dari **100**! <br>
-Untuk bisa interaksi (*time to interactive*) butuh waktu **30 detik**!
-Itu bisa digunakan untuk lihat 2x IG Story loh!
+Untuk bisa interaksi (*time to interactive*) butuh waktu **30 detik**! <br>
+Itu bisa digunakan untuk lihat **2x IG Story** loh!
 
 Jika kamu penasaran, cek sendiri di link ini: <br>
 [Pagespeed Insight Greatmind.id](https://developers.google.com/speed/pagespeed/insights/?url=https://greatmind.id)
@@ -40,10 +40,41 @@ Lihat sendiri hasilnya: <br>
 
 <img loading="lazy" class="rounded" src="/img/pagespeed-test-greatmind.web.id.webp" alt="Hasil tes pagespeed">
 
+
+-----
+
+Tapi tunggu, ini melanggar hak cipta gak sih?
+
+Aku kutip dari [*disclaimer* situs greatmind.id](https://greatmind.id/disclaimer)
+
+<blockquote style="font-size:1.2rem">
+  ...
+  "GREATMIND memberi pembaca lisensi terbatas secara pribadi, non-eksklusif,
+  non-komersial, untuk menggunakan, melihat, dan/atau memutar Konten GREATMIND.
+  Anda dapat membuat salinan setiap artikel semata-mata untuk
+  penggunaan pribadi Anda. Anda tidak boleh memodifikasi salinan digital dari
+  materi apa pun yang telah Anda salin dengan cara apa pun, dan Anda tidak
+  boleh menggunakan ilustrasi, foto, video, atau urutan audio atau gambar
+  apa pun secara terpisah dari teks yang menyertainya.
+  ...
+</blockquote>
+
+Disini situs {{ config.app.name }}:
+
+✅️ tujuannya tidak untuk komersil (*no promotion, no ads, not a store*) <br>
+✅️ penggunaan pribadi, untuk aku konsumsi dengan cepat <br>
+✅️ konten masih asli, tidak ada modifikasi, hanya perubahan tata letak <br>
+✅️ gambar, ilustrasi, dsb digunakan secara utuh bersama tulisan <br>
+
+Semoga tidak ada hak cipta yang dilanggar. Lagian tujuan situs ini baik kok,
+yaitu ikut serta (*advance the cause*) menyebarkan buah pemikiran yang baik.
+
+-----
+
 <!-- Oh ya, kode situs ini tersedia secara terbuka di github
 [lakuapik/greatmind.web.id](https://github.com/lakuapik/greatmind.web.id). -->
 
 Jika kamu penasaran bagaimana proses pembuatannya, silahkan kunjungi
 [blog pribadiku](https://davids.id) untuk penjelasan lebih lanjut.
 
-Salam ✌️
+Salam Kebaikan 👋️

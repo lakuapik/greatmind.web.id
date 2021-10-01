@@ -1,0 +1,34 @@
+---
+eleventyExcludeFromCollections: true
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="{{ config.app.name }} - Acak">
+  <meta name="description" content="tunggu sebentar, kamu akan diarahkan ke halaman selanjutnya...">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <title>{{ config.app.name }} - Acak</title>
+</head>
+<body style="max-width:768px;margin:0 auto">
+  <noscript>
+    <p>Halaman ini membutuhkan javascript.</p>
+    <p>Silahkan aktifkan lalu coba lagi.</p>
+  </noscript>
+  <p>tunggu sebentar, kamu akan diarahkan ke halaman selanjutnya...</p>
+  <p>jika tidak, silahkan kunjungi <a href="/">link berikut ini.</a></p>
+  <script>
+    function getRandomInt(min, max) {
+      var min = Math.ceil(min), max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    var rand = getRandomInt(1, {{ collections.article.length }});
+    fetch(`/artikel/json/${rand}.json`)
+      .then(r => r.json())
+      .then(d => window.location = `/artikel/${d.slug}?ref=random`);
+  </script>
+</body>
+</html>

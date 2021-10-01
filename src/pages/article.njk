@@ -83,6 +83,9 @@ eleventyExcludeFromCollections: true
     </header>
     <main id="content" class="mt-10 prose dark:prose-dark sm:prose-lg lg:prose-xl">
       {{ article.content | safe }}
+      <br>
+      <p>Kunjungi tulisan asli di: <a target="_blank" href="{{ article.url }}">{{ article.url }}</a></p>
+      <hr>
     </main>
   </article>
 {% endblock %}

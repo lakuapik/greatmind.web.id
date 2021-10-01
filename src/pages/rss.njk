@@ -25,7 +25,7 @@ eleventyExcludeFromCollections: true
     {% for article in collections.feed_article %}
       <item>
         <title>{{ article.title }}</title>
-        <link>https://{{ config.app.domain }}/artikel/{{ article.slug }}/</link>
+        <link>https://{{ config.app.domain }}/artikel/{{ article.slug }}?ref=rss</link>
         <guid isPermaLink="false">https://{{ config.app.domain }}/artikel/{{ article.slug }}/</guid>
         <category><![CDATA[{{ article.category }}]]></category>
         <category><![CDATA[{{ article.topic }}]]></category>

@@ -1,0 +1,9 @@
+---
+pagination:
+  size: 1
+  data: collections.article
+  alias: article
+permalink: "artikel/json/{{ pagination.pageNumber + 1 }}.json"
+---
+
+{{ article | jsonify | safe }}
