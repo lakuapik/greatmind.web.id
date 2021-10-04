@@ -112,7 +112,8 @@ def main() -> None:
     # step 1: crawl the articles
     # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     #     futures = []
-    #     last_page = 134 # manually query
+    #     last_page = 5 # manually query
+    #     # last_page = 134 # manually query
     #     for i in range(1, last_page+1):
     #         print(f"> crawling page {i}")
     #         futures.append(executor.submit(process_get_articles_from_loadmore, page=i))
