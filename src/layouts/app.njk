@@ -23,6 +23,11 @@
     <meta property="og:description" content="{{ (description or renderData.description or config.app.desc) }}" />
     <meta property="og:url" content="{{ page.url }}" />
     <meta property="og:image" content="{{ (cover or renderData.cover or config.app.ogImage) }}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="{{ (title or renderData.title or config.app.title) }}" />
+    <meta property="twitter:description" content="{{ (description or renderData.description or config.app.desc) }}" />
+    <meta property="twitter:image" content="{{ (cover or renderData.cover or config.app.ogImage) }}" />
+    <meta property="twitter:creator" content="@greatmind_id" />
     {# END SEO #}
     {% block before_head %} {% endblock %}
   </head>
