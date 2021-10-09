@@ -3,9 +3,7 @@
     darkMode: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches),
     toggleClass() {
       var c = document.documentElement.classList;
-      var b = document.querySelector('.carbonbadge').classList;
       this.darkMode ? c.add('dark') : c.remove('dark');
-      this.darkMode ? b.add('wcb-d') : b.remove('wcb-d');
     },
     init() { this.toggleClass(); },
     toggle() { this.darkMode = !this.darkMode; this.toggleClass(); },
