@@ -33,3 +33,9 @@
 .prose blockquote {
   @apply px-4 text-xl;
 }
+
+/** ——— Carbon Badge from websitecarbon.com ——— **/
+
+.carbonbadge {
+  font-size: .875rem !important;
+}

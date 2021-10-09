@@ -26,7 +26,7 @@ eleventyExcludeFromCollections: true
       return Math.floor(Math.random() * (max - min) + min);
     }
     var rand = getRandomInt(1, {{ collections.article.length }});
-    fetch(`/artikel/json/${rand}.json`)
+    fetch(`/api/artikel/${rand}.json`)
       .then(r => r.json())
       .then(d => window.location = `/artikel/${d.slug}?ref=random`);
   </script>
