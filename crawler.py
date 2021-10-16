@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import re
+import sys
 import time
 # import pytz
 import requests
@@ -97,7 +98,6 @@ def process_completing_article_metadata(id: int, url: str) -> None:
     )
 
 
-
 def main() -> None:
     start = time.time()
 
@@ -109,29 +109,34 @@ def main() -> None:
         author_desc TEXT, content TEXT
     )''')
 
-    # step 1: crawl the articles
-    # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-    #     futures = []
-    #     last_page = 5 # manually query
-    #     # last_page = 134 # manually query
-    #     for i in range(1, last_page+1):
-    #         print(f"> crawling page {i}")
-    #         futures.append(executor.submit(process_get_articles_from_loadmore, page=i))
-    #     for future in concurrent.futures.as_completed(futures):
-    #         print(f"> crawling pages complete")
+    if (len(sys.argv) < 2):
+      return print('please supply an argument')
 
-    # step 2: complete metadata of each article
-    # this will query data from sqlite database
-    # results = sqlite.execute("SELECT id, url from articles WHERE content='' limit 50")
-    # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-    #     futures = []
-    #     for id, url in results:
-    #         print(f"> completing metadata of {url}")
-    #         futures.append(executor.submit(process_completing_article_metadata, id=id, url=url))
-    #     for future in concurrent.futures.as_completed(futures):
-    #         print(f"> completing metadata complete")
+    if (sys.argv[1] == '--crawl-step-1'):
+      # step 1: crawl the articles
+      with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        futures = []
+        last_page = 3 # manually query
+        # last_page = 134 # manually query
+        for i in range(1, last_page+1):
+            print(f"> crawling page {i}")
+            futures.append(executor.submit(process_get_articles_from_loadmore, page=i))
+        for future in concurrent.futures.as_completed(futures):
+            print(f"> crawling pages complete")
 
-    print('\n It took', time.time()-start, 'seconds.')
+    if (sys.argv[1] == '--crawl-step-2'):
+      # step 2: complete metadata of each article
+      # this will query data from sqlite database
+      results = sqlite.execute("SELECT id, url from articles WHERE content='' limit 50")
+      with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+          futures = []
+          for id, url in results:
+              print(f"> completing metadata of {url}")
+              futures.append(executor.submit(process_completing_article_metadata, id=id, url=url))
+          for future in concurrent.futures.as_completed(futures):
+              print(f"> completing metadata complete")
+
+    print('\n Done! It took', time.time()-start, 'seconds.')
 
 
 if __name__ == "__main__":

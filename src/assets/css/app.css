@@ -34,6 +34,10 @@
   @apply px-4 text-xl;
 }
 
+.prose-img {
+  @apply object-contain md:object-scale-down;
+}
+
 /** ——— Carbon Badge from websitecarbon.com ——— **/
 
 .carbonbadge {

@@ -1,0 +1,30 @@
+name: crawl
+
+on:
+  workflow_dispatch:
+  schedule:
+    # every saturday 12pm GMT+7
+    - cron: 5 0 * * SAT
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Setup python
+        uses: actions/setup-python@v2
+      - name: Install python dependencies
+        run: pip install lxml requests sqlite3worker
+      - name: Crawl step 1
+        run: python crawler.py --crawl-step-1
+      - name: Complete step 2
+        run: python crawler.py --crawl-step-2
+      - name: Commit changes
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add -A
+          git commit -m "crawl and update content" ||  true
+          git push --force origin HEAD:$GITHUB_REF || true
