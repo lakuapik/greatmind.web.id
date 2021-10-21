@@ -19,21 +19,21 @@ eleventyExcludeFromCollections: true
       <link>https://{{ config.app.domain }}/</link>
     </image>
     <generator>{{ config.app.name }}</generator>
-    <lastBuildDate>{{ collections.feed_article[0].date | dateRfc3339 }}</lastBuildDate>
-    <atom:link href="https://{{ config.app.domain }}/feed" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>{{ collections.feed_article[0].date | dateMidnight | dateRfc3339 }}</lastBuildDate>
+    <atom:link href="https://{{ config.app.domain }}/rss.xml" rel="self" type="application/rss+xml"/>
     <webMaster><![CDATA[{{ config.app.email }}]]></webMaster>
     {% for article in collections.feed_article %}
       <item>
         <title>{{ article.title }}</title>
-        <link>https://{{ config.app.domain }}/artikel/{{ article.slug }}?ref=rss</link>
+        <link>https://{{ config.app.domain }}/artikel/{{ article.slug }}/?ref=rss</link>
         <guid isPermaLink="false">https://{{ config.app.domain }}/artikel/{{ article.slug }}/</guid>
         <category><![CDATA[{{ article.category }}]]></category>
         <category><![CDATA[{{ article.topic }}]]></category>
         <dc:creator><![CDATA[{{ article.author_name }}]]></dc:creator>
-        <pubDate>{{ article.date | dateRfc3339 }}</pubDate>
-        <atom:updated>{{ article.date | dateRfc3339 }}</atom:updated>
+        <pubDate>{{ article.date | dateMidnight | dateRfc3339 }}</pubDate>
+        <atom:updated>{{ article.date | dateMidnight | dateRfc3339 }}</atom:updated>
         <description><![CDATA[<p>{{ article.excerpt }}</p>]]></description>
-        <content:encoded><![CDATA[{{ article.content | safe }}]]></content:encoded>
+        <content:encoded><![CDATA[{{ article | rssContent | safe }}]]></content:encoded>
       </item>
     {% endfor %}
   </channel>

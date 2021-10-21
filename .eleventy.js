@@ -4,8 +4,11 @@ const utc = require('dayjs/plugin/utc')
 const sqlite = require('better-sqlite3');
 const htmlmin = require('html-minifier');
 const timezone = require('dayjs/plugin/timezone')
-const UserConfig = require('@11ty/eleventy/src/UserConfig');
+const assetUrl = require('./src/helper/assetUrl');
+const rssContent = require('./src/helper/rssContent');
 const readingTime = require('./src/helper/readingTime');
+const UserConfig = require('@11ty/eleventy/src/UserConfig');
+const staticallyImg = require('./src/helper/staticallyImg');
 const transformArticles = require('./src/helper/transformArticles');
 
 dayjs.extend(utc);
@@ -40,27 +43,19 @@ module.exports = (e11) => {
 
   e11.addFilter('dateRfc3339', (val) => dayjs(val).tz(tz).format('YYYY-MM-DDTHH:mm:ssZ'));
 
+  e11.addFilter('dateMidnight', (val) => dayjs(val).tz(tz).hour(0).minute(0).second(0).toISOString());
+
   e11.addFilter('readTime', (val) => readingTime(val, { speed: 200 }));
 
   e11.addFilter('ceil', (val) => Math.ceil(val));
 
   e11.addFilter('jsonify', (val) => JSON.stringify(val));
 
-  e11.addFilter('assetUrl', (url) => {
-    const [urlPart, paramPart] = url.split('?');
-    const params = new URLSearchParams(paramPart || '');
-    const rUrl = (urlPart.charAt(0) == '/') ? urlPart.substring(1) : urlPart;
-    const fileStats = fs.statSync(`./src/assets/${rUrl}`);
-    params.set('v', new Date(fileStats.mtime).getTime());
-    return `${urlPart}?${params}`;
-  });
+  e11.addFilter('assetUrl', (url) => assetUrl(url));
 
-  e11.addFilter('staticallyImg', (url, width = '') => {
-    const paths = url.replace('https://', '').split('/');
-    const domain = paths[0];
-    const image = paths.slice(1, paths.length).join('/');
-    return `https://cdn.statically.io/img/${domain}/f=auto&w=${width}/${image}`;
-  });
+  e11.addFilter('staticallyImg', (url, width = '') => staticallyImg(url, width));
+
+  e11.addFilter('rssContent', (content) => rssContent(content));
 
   e11.addCollection('article', (collection) => {
     const articles = sqlite('database.sqlite').prepare(

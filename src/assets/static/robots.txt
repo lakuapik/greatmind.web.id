@@ -2,3 +2,6 @@ Sitemap: https://greatmind.web.id/sitemap.xml
 
 User-agent: *
 Disallow:
+
+User-agent: *
+Disallow: /api/*

@@ -15,7 +15,8 @@ hosted at [greatmind.web.id](https://greatmind.web.id).
 ### Crawl Script
 
 1. Open `crawler.py` file and suits your need
-1. Crawl the website with `python crawler.py`
+2. Crawl new articles with `python crawler.py --crawl-step-1`
+3. Crawl completing articles metadata with `python crawler.py --crawl-step-2`
 
 ## Why and How
 

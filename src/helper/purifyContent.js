@@ -13,7 +13,7 @@ module.exports = function purifyContent(content) {
   content = content.replace(
     /\<img(.*?)src="(\/public\/themes\/default\/backend\/js\/library\/ckfinder\/userfiles(.*?))"(.*?)\/\>/gs,
     `<img class="prose-img" src="https://cdn.statically.io/img/greatmind.id/f=auto$2" />`
-  )
+  );
 
   return content;
 }

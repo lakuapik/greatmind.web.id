@@ -18,7 +18,7 @@ jobs:
         run: pip install lxml requests sqlite3worker
       - name: Crawl step 1
         run: python crawler.py --crawl-step-1
-      - name: Complete step 2
+      - name: Crawl step 2
         run: python crawler.py --crawl-step-2
       - name: Commit changes
         run: |

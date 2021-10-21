@@ -11,12 +11,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link rel="preload" href="https://fonts.gstatic.com/s/cantarell/v10/B50NF7ZDq37KMUvlO015jKJr.woff2" as="font" type="font/woff2">
     <link rel="dns-prefetch" href="https://cdn.statically.io" />
-    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ config.app.title }} feed" />
+    <link rel="alternate" href="/rss.xml" type="application/rss+xml" title="{{ config.app.title }} feed" />
     {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cantarell&display=swap"> #}
     <link rel="manifest" href="/manifest.json">
     <title>{{ config.app.name }} - {{ title or renderData.title }}</title>
     {# SEO #}
-    <meta name="robots" content="index, follow" />
+    {% if seoDoNotIndex %}
+      <meta name="robots" content="noindex" />
+    {% else %}
+      <meta name="robots" content="index, follow" />
+    {% endif %}
     <meta name="title" content="{{ (title or renderData.title or config.app.title) }}">
     <meta name="description" content="{{ (description or renderData.description or config.app.desc) }}">
     <meta property="og:title" content="{{ (title or renderData.title or config.app.title) }}"/>

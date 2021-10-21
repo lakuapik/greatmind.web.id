@@ -4,14 +4,16 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for article in collections.article | reverse %}
+    <url>
+      <loc>https://{{ config.app.domain }}/artikel/{{ article.slug }}/</loc>
+      <lastmod>{{ article.date | dateMidnight }}</lastmod>
+    </url>
+  {% endfor %}
   {% for page in collections.all %}
     <url>
       <loc>https://{{ config.app.domain }}{{ page.url | url }}</loc>
       <lastmod>{{ page.date.toISOString() }}</lastmod>
     </url>
   {% endfor %}
-  <url>
-    <loc>https://{{ config.app.domain }}/daftar-artikel/</loc>
-    <lastmod>{{ page.date.toISOString() }}</lastmod>
-  </url>
 </urlset>

@@ -10,7 +10,7 @@ title: Hi
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {% for article in collections.latest_article %}
       <div class="col-span-3 p-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:text-gray-200 sm:col-span-1">
-        <a href="/artikel/{{ article.slug }}">
+        <a href="/artikel/{{ article.slug }}/">
           <img class="mx-auto mb-4 rounded-lg" width="380" height="220" src="{{ article.cover | staticallyImg(576) }}" alt="{{ article.title }}">
           <h2 class="py-3 text-lg font-bold leading-tighter hover:text-blue-700">
             {{ article.title }}
@@ -25,7 +25,7 @@ title: Hi
     {% endfor %}
   </div>
   <div class="my-8 text-center">
-    <a class="px-3 py-2 text-base font-medium text-blue-600 transition duration-150 ease-in-out rounded-lg hover:bg-gray-200 dark:text-blue-400 dark:hover:bg-gray-800" href="/daftar-artikel">
+    <a class="px-3 py-2 text-base font-medium text-blue-600 transition duration-150 ease-in-out rounded-lg hover:bg-gray-200 dark:text-blue-400 dark:hover:bg-gray-800" href="/daftar-artikel/">
       Lihat semua artikel →
     </a>
   </div>
@@ -33,7 +33,7 @@ title: Hi
 
 <section class="flex flex-col items-center py-8 mt-16 space-y-1 bg-gray-200 bg-opacity-50 dark:bg-gray-800 dark:bg-opacity-50">
   <p class="text-lg">Tampilkan satu artikel secara acak</p>
-  <a class="px-3 py-2 text-base font-medium text-blue-600 transition duration-150 ease-in-out rounded-lg hover:bg-gray-200 dark:text-blue-400 dark:hover:bg-gray-800" href="/acak">
+  <a class="px-3 py-2 text-base font-medium text-blue-600 transition duration-150 ease-in-out rounded-lg hover:bg-gray-200 dark:text-blue-400 dark:hover:bg-gray-800" href="/acak/">
     Saya merasa beruntung →
   </a>
 </section>

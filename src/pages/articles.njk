@@ -9,6 +9,7 @@ renderData:
   title: "Daftar Artikel Halaman {{ pagination.pageNumber + 1 }}"
   description: "Daftar artikel halaman {{ pagination.pageNumber + 1 }}"
 eleventyExcludeFromCollections: true
+seoDoNotIndex: true
 ---
 
 <h1 class="pb-8 text-2xl font-bold text-center md:text-4xl">
@@ -19,12 +20,12 @@ eleventyExcludeFromCollections: true
 
   {% for article in articles %}
     <div class="flex flex-col items-center p-5 my-5 space-x-0 space-y-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:text-gray-200 sm:flex-row sm:space-x-5 sm:space-y-0 sm:text-left">
-      <a class="flex-shrink-0 block w-full sm:w-36" href="/artikel/{{ article.slug }}">
+      <a class="flex-shrink-0 block w-full sm:w-36" href="/artikel/{{ article.slug }}/">
         <img class="object-cover mx-auto rounded-md sm:h-28"
           src="{{ article.cover | staticallyImg(576) }}" alt="{{ article.title }}">
       </a>
       <div>
-        <a class="hover:text-blue-600 dark:hover:text-blue-300" href="/artikel/{{ article.slug }}">
+        <a class="hover:text-blue-600 dark:hover:text-blue-300" href="/artikel/{{ article.slug }}/">
           <h2 class="pt-2 text-lg font-bold leading-tighter">
             {{ article.title }}
           </h2>
@@ -66,7 +67,7 @@ eleventyExcludeFromCollections: true
         >&lt;</a>
       {% endif %}
       {% if pgCurrent > 2 %}
-        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-1">1</a>
+        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-1/">1</a>
         <a class="px-3 py-2 -ml-1 border" disabled>...</a>
       {% endif %}
       {%- for pageEntry in pagination.pages %}
@@ -86,7 +87,7 @@ eleventyExcludeFromCollections: true
         <a class="px-3 py-2 -ml-1 border" disabled>...</a>
       {% endif %}
       {% if (pgLast - pgCurrent) > 3 %}
-        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-{{ pgLast }}">{{ pgLast }}</a>
+        <a class="px-3 py-2 -ml-1 border" href="/daftar-artikel/halaman-{{ pgLast }}/">{{ pgLast }}</a>
       {% endif %}
       {% if pgCurrent != pgLast %}
         <a class="px-3 py-2 -ml-1 border"

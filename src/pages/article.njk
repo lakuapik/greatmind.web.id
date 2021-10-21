@@ -8,8 +8,8 @@ renderData:
   title: "{{ article.title | safe }}"
   description: "{{ article.excerpt | safe }}"
   cover: "{{ article.cover | staticallyImg(576) }}"
-  shareUrl: "https://{{ config.app.domain }}/artikel/{{ article.slug }}"
-  shareFullText: "{{ article.title }}    https://{{ config.app.domain }}/artikel/{{ article.slug }}"
+  shareUrl: "https://{{ config.app.domain }}/artikel/{{ article.slug }}/"
+  shareFullText: "{{ article.title }}    https://{{ config.app.domain }}/artikel/{{ article.slug }}/"
 eleventyExcludeFromCollections: true
 ---
 

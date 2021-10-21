@@ -1,5 +1,6 @@
 ---
 eleventyExcludeFromCollections: true
+seoDoNotIndex: true
 ---
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ eleventyExcludeFromCollections: true
     <p>Silahkan aktifkan lalu coba lagi.</p>
   </noscript>
   <p>tunggu sebentar, kamu akan diarahkan ke halaman selanjutnya...</p>
-  <p>jika tidak, silahkan kunjungi <a href="/">link berikut ini.</a></p>
+  <p>jika tidak, silahkan kunjungi <a id="link" href="/">link berikut ini.</a></p>
   <script>
     function getRandomInt(min, max) {
       var min = Math.ceil(min), max = Math.floor(max);
@@ -28,7 +29,11 @@ eleventyExcludeFromCollections: true
     var rand = getRandomInt(1, {{ collections.article.length }});
     fetch(`/api/artikel/${rand}.json`)
       .then(r => r.json())
-      .then(d => window.location = `/artikel/${d.slug}?ref=random`);
+      .then(d => {
+        var url = `/artikel/${d.slug}/?ref=random`;
+        document.querySelector('#id').href=url;
+        window.location = url;
+      });
   </script>
 </body>
 </html>
