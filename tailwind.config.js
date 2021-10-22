@@ -1,4 +1,4 @@
-const {spacing, colors } = require('tailwindcss/defaultTheme');
+const { spacing, colors } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
@@ -27,7 +27,7 @@ module.exports = {
               '*': {
                 color: theme('colors.blue.600'),
               },
-              code: {color: theme('colors.blue.600')},
+              code: { color: theme('colors.blue.600') },
             },
             'strong > a, a > strong': {
               color: theme('colors.blue.600'),
@@ -68,7 +68,7 @@ module.exports = {
               '&:hover': {
                 color: theme('colors.blue.300'),
               },
-              code: {color: theme('colors.blue.400')},
+              code: { color: theme('colors.blue.400') },
               '*': {
                 color: theme('colors.blue.400'),
                 '&:hover': {
@@ -100,8 +100,8 @@ module.exports = {
               background: 'none',
               padding: 0,
             },
-            hr: {borderColor: theme('colors.gray.700')},
-            strong: {color: theme('colors.white')},
+            hr: { borderColor: theme('colors.gray.700') },
+            strong: { color: theme('colors.white') },
             thead: {
               color: theme('colors.gray.100'),
             },
@@ -124,7 +124,7 @@ module.exports = {
         xl: '1280px',
         '2xl': '1440px',
         '3xl': '1920px',
-        print: {raw: 'print'},
+        print: { raw: 'print' },
       },
       fontSize: {
         // Set in Major Third typescale (1.25)

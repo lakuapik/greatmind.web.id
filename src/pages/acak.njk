@@ -31,7 +31,7 @@ seoDoNotIndex: true
       .then(r => r.json())
       .then(d => {
         var url = `/artikel/${d.slug}/?ref=random`;
-        document.querySelector('#id').href=url;
+        document.querySelector('#link').href=url;
         window.location = url;
       });
   </script>
