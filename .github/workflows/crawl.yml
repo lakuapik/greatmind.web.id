@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # every saturday 12pm GMT+7
-    - cron: 5 0 * * SAT
+    - cron: 0 5 * * SAT,WED
 
 jobs:
   main:
