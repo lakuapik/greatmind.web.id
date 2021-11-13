@@ -71,10 +71,19 @@ yaitu ikut serta (*advance the cause*) menyebarkan buah pemikiran yang baik.
 
 -----
 
-<!-- Oh ya, kode situs ini tersedia secara terbuka di github
-[lakuapik/greatmind.web.id](https://github.com/lakuapik/greatmind.web.id). -->
-
 Jika kamu penasaran bagaimana proses pembuatannya, silahkan kunjungi
 [blog pribadiku](https://davids.id) untuk penjelasan lebih lanjut.
 
 Salam Kebaikan 👋️
+
+-----
+
+Pembaruan 13 November 2021:
+
+Aku sudah email ke tim greatmind mengenai situs ini dan sudah
+kurang lebih dua bulan tidak ada jawaban sama sekali.
+Maka dari itu aku simpulkan situs ini tidak menganggu situs utama
+greatmind.id.
+
+Dan sekarang kode situs ini tersedia secara terbuka di github
+[lakuapik/greatmind.web.id](https://github.com/lakuapik/greatmind.web.id).
