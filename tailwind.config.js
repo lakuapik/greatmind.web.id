@@ -62,7 +62,7 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.white'),
+            color: '#E2E8F0',
             a: {
               color: theme('colors.blue.400'),
               '&:hover': {
@@ -84,16 +84,16 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             h1: {
-              color: theme('colors.white'),
+              color: '#E2E8F0',
             },
             'h2,h3,h4': {
-              color: theme('colors.white'),
+              color: '#E2E8F0',
               'scroll-margin-top': spacing[32],
             },
             code: {
               padding: '3px 5px',
               borderRadius: 5,
-              color: theme('colors.white'),
+              color: '#E2E8F0',
               background: theme('colors.gray.800'),
             },
             'pre > code': {
@@ -101,7 +101,7 @@ module.exports = {
               padding: 0,
             },
             hr: { borderColor: theme('colors.gray.700') },
-            strong: { color: theme('colors.white') },
+            strong: { color: '#E2E8F0' },
             thead: {
               color: theme('colors.gray.100'),
             },

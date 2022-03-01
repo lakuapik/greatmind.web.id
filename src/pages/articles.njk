@@ -19,7 +19,7 @@ seoDoNotIndex: true
 <div class="max-w-screen-md mx-auto">
 
   {% for article in articles %}
-    <div class="flex flex-col items-center p-5 my-5 space-x-0 space-y-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:text-gray-200 sm:flex-row sm:space-x-5 sm:space-y-0 sm:text-left">
+    <div class="flex flex-col items-center p-5 my-5 space-x-0 space-y-5 overflow-hidden text-center bg-white rounded-lg shadow-sm dark:bg-gray-700 dark:text-gray-200 sm:flex-row sm:space-x-5 sm:space-y-0 sm:text-left">
       <a class="flex-shrink-0 block w-full sm:w-36" href="/artikel/{{ article.slug }}/">
         <img class="object-cover mx-auto rounded-md sm:h-28"
           src="{{ article.cover | staticallyImg(576) }}" alt="{{ article.title }}">
