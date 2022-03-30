@@ -1,4 +1,8 @@
 module.exports = function staticallyImg(url, width = '') {
+  return url;
+
+  // !! for unknown reason, the statically.io always redirect to original image
+
   const paths = url.replace('https://', '').split('/');
   const domain = paths[0];
   const image = paths.slice(1, paths.length).join('/');
