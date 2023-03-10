@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="https://cdn.statically.io" />
     {# <link rel="alternate" href="/rss.xml" type="application/rss+xml" title="{{ config.app.title }} feed" /> #}
     {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cantarell&display=swap"> #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic"/>
     <link rel="manifest" href="/manifest.json">
     <title>{{ config.app.name }} - {{ title or renderData.title }}</title>
     {# SEO #}
@@ -44,5 +45,7 @@
     <script defer src="{{ '/js/app.js' | assetUrl }}"></script>
     <script defer src="https://cdn.statically.io/libs/alpinejs/3.4.0/cdn.min.js"></script>
     <script async data-goatcounter="https://greatmind-mirror.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js"></script>
+    <script defer src=" https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch.umd.min.js"></script>
   </body>
 </html>
