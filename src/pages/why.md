@@ -2,7 +2,7 @@
 layout: page
 title: Mengapa buat situs ini?
 description: Ya, mengapa aku sampai buat situs ini, apa alasannya?
-renderData:
+eleventyComputed:
   title: WHY
 ---
 

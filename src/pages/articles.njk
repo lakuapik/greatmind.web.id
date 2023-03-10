@@ -5,7 +5,7 @@ pagination:
   data: collections.article
   alias: articles
 permalink: "daftar-artikel/halaman-{{ pagination.pageNumber + 1 }}/"
-renderData:
+eleventyComputed:
   title: "Daftar Artikel Halaman {{ pagination.pageNumber + 1 }}"
   description: "Daftar artikel halaman {{ pagination.pageNumber + 1 }}"
 eleventyExcludeFromCollections: true

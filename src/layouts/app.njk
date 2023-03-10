@@ -15,23 +15,23 @@
     {# <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cantarell&display=swap"> #}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic"/>
     <link rel="manifest" href="/manifest.json">
-    <title>{{ config.app.name }} - {{ title or renderData.title }}</title>
+    <title>{{ config.app.name }} - {{ title or eleventyComputed.title }}</title>
     {# SEO #}
     {% if seoDoNotIndex %}
       <meta name="robots" content="noindex" />
     {% else %}
       <meta name="robots" content="index, follow" />
     {% endif %}
-    <meta name="title" content="{{ (title or renderData.title or config.app.title) }}">
-    <meta name="description" content="{{ (description or renderData.description or config.app.desc) }}">
-    <meta property="og:title" content="{{ (title or renderData.title or config.app.title) }}"/>
-    <meta property="og:description" content="{{ (description or renderData.description or config.app.desc) }}" />
+    <meta name="title" content="{{ (title or eleventyComputed.title or config.app.title) }}">
+    <meta name="description" content="{{ (description or eleventyComputed.description or config.app.desc) }}">
+    <meta property="og:title" content="{{ (title or eleventyComputed.title or config.app.title) }}"/>
+    <meta property="og:description" content="{{ (description or eleventyComputed.description or config.app.desc) }}" />
     <meta property="og:url" content="{{ page.url }}" />
-    <meta property="og:image" content="{{ (cover or renderData.cover or config.app.ogImage) }}" />
+    <meta property="og:image" content="{{ (cover or eleventyComputed.cover or config.app.ogImage) }}" />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="{{ (title or renderData.title or config.app.title) }}" />
-    <meta property="twitter:description" content="{{ (description or renderData.description or config.app.desc) }}" />
-    <meta property="twitter:image" content="{{ (cover or renderData.cover or config.app.ogImage) }}" />
+    <meta property="twitter:title" content="{{ (title or eleventyComputed.title or config.app.title) }}" />
+    <meta property="twitter:description" content="{{ (description or eleventyComputed.description or config.app.desc) }}" />
+    <meta property="twitter:image" content="{{ (cover or eleventyComputed.cover or config.app.ogImage) }}" />
     <meta property="twitter:creator" content="@greatmind_id" />
     {# END SEO #}
     {% block before_head %} {% endblock %}
