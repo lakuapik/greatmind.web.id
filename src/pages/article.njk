@@ -14,7 +14,7 @@ eleventyExcludeFromCollections: true
 {% extends './../layouts/app.njk' %}
 
 {% block before_head %}
- <link rel="canonical" href="{{ article.url }}" />
+ {# <link rel="canonical" href="{{ article.url }}" /> #}
  <script defer src="https://cdn.statically.io/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
  <script>window.addEventListener('load', function(){ new ClipboardJS('#shareLink'); })</script>
 {% endblock %}
@@ -40,27 +40,27 @@ eleventyExcludeFromCollections: true
         <div class="hidden mr-4 xs:block">
           <p class="mb-1 text-center">Bagikan</p>
           <div x-data="{mobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) }" class="flex space-x-2">
-            <a x-show="mobile" href="whatsapp://send?text={{ eleventyComputed.shareFullText }}" aria-label="Bagikan ke whatsapp">
+            <a x-show="mobile" href="whatsapp://send?text={{ article.title}} — https://{{ config.app.domain | safe }}/artikel/{{ article.slug }}" aria-label="Bagikan ke whatsapp">
               <svg class="hover:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01z" fill="currentColor"></path>
               </svg>
             </a>
             <a x-show="!mobile" target="_blank" aria-label="Bagikan ke facebook"
-              href=" https://www.facebook.com/sharer/sharer.php?u=https://{{ config.app.domain | safe }}/artikel/{{ article.slug }}/"
+              href=" https://www.facebook.com/sharer/sharer.php?u=https://{{ config.app.domain | safe }}/artikel/{{ article.slug }}"
             >
               <svg class="hover:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
                 <path d="M13 10h3v3h-3v7h-3v-7H7v-3h3V8.745c0-1.189.374-2.691 1.118-3.512C11.862 4.41 12.791 4 13.904 4H16v3h-2.1c-.498 0-.9.402-.9.899V10z" fill="currentColor"></path>
               </svg>
             </a>
             <a x-show="!mobile" target="_blank" aria-label="Bagikan ke twitter"
-              href="http://twitter.com/share?text={{ article.title }}&url=https://{{ config.app.domain | safe }}/artikel/{{ article.slug }}/&hashtags=greatmind"
+              href="http://twitter.com/share?text={{ article.title }}&url=https://{{ config.app.domain | safe }}/artikel/{{ article.slug }}&hashtags=greatmind"
             >
               <svg class="hover:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 256 256">
                 <path d="M247.391 68.938A8 8 0 0 0 240 64h-30.423a47.819 47.819 0 0 0-75.216-10.054A47.59 47.59 0 0 0 120 87.996l-.005 6.12C79.299 83.513 46.009 50.694 45.657 50.342a8 8 0 0 0-13.528 4.226c-8.775 48.265 5.723 80.573 19.43 99.177A109.574 109.574 0 0 0 76.287 178.1c-15.247 17.25-38.838 26.311-39.095 26.408a8 8 0 0 0-3.847 11.928c.745 1.12 3.748 5.053 11.078 8.718C53.506 229.697 65.476 232 80 232c70.538 0 129.47-54.298 135.493-124.179l30.164-30.164a8 8 0 0 0 1.734-8.719zm-45.31 29.668a7.998 7.998 0 0 0-2.327 5.148C195.744 166.696 143.142 216 80 216c-10.562 0-18.046-1.4-23.223-3.08c11.517-6.251 27.562-17.006 37.88-32.482a8.02 8.02 0 0 0-3.054-11.581c-.148-.075-14.937-7.727-27.607-25.211c-14.411-19.888-20.47-43.956-18.083-71.702c15.78 12.954 46.03 34.158 80.758 39.947a8 8 0 0 0 9.315-7.884L136 88.01v-.008a32.32 32.32 0 0 1 32.409-32a32.07 32.07 0 0 1 28.932 19.2A8 8 0 0 0 204.67 80h16.016z" fill="currentColor"></path>
               </svg>
             </a>
             <svg id="shareLink" 
-              data-clipboard-text="https://{{ config.app.domain }}/artikel/{{ article.slug }}/" x-on:click="alert('Tautan tersalin!')"
+              data-clipboard-text="https://{{ config.app.domain }}/artikel/{{ article.slug }}" x-on:click="alert('Tautan tersalin!')"
               class="cursor-pointer hover:text-gray-400" aria-label="Bagikan tautan"
               xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
               <path d="M13.753 2c1.158 0 2.11.875 2.234 2h1.763a2.25 2.25 0 0 1 2.245 2.096L20 6.25v6a.75.75 0 0 1-1.493.102l-.007-.102v-6a.75.75 0 0 0-.648-.743L17.75 5.5h-2.132c-.403.6-1.088.993-1.865.993h-3.506A2.244 2.244 0 0 1 8.382 5.5H6.25a.75.75 0 0 0-.743.648L5.5 6.25v13.505c0 .38.282.693.648.743l.204.013a.75.75 0 0 1-.102 1.494a2.25 2.25 0 0 1-2.245-2.096L4 19.755V6.25a2.25 2.25 0 0 1 2.096-2.245L6.25 4h1.763a2.247 2.247 0 0 1 2.234-2h3.506zm3.497 12.5h1a3.75 3.75 0 0 1 .202 7.495l-.199.005l-1 .005a.75.75 0 0 1-.108-1.493l.102-.007l1.003-.005a2.25 2.25 0 0 0 .154-4.495L18.25 16h-1a.75.75 0 0 1-.102-1.493l.102-.007h1h-1zm-5 0h1a.75.75 0 0 1 .102 1.493L13.25 16h-1a2.25 2.25 0 0 0-.154 4.495l.154.005h1a.75.75 0 0 1 .102 1.493L13.25 22h-1a3.75 3.75 0 0 1-.2-7.495l.2-.005h1h-1zm0 3h6a.75.75 0 0 1 .102 1.493L18.25 19h-6a.75.75 0 0 1-.102-1.493l.102-.007h6h-6zm1.503-14h-3.506a.747.747 0 0 0 0 1.493h3.506a.747.747 0 1 0 0-1.493z" fill="currentColor" fill-rule="nonzero"></path>
