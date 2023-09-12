@@ -15,11 +15,13 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
       - name: Install python dependencies
-        run: pip install lxml requests sqlite3worker
+        run: pip install lxml requests sqlite3worker algoliasearch
       - name: Crawl step 1
         run: python crawler.py --crawl-step-1
       - name: Crawl step 2
         run: python crawler.py --crawl-step-2
+      - name: Algolia re-index
+        run: python algolia.py
       - name: Commit changes
         run: |
           git config --global user.name github-actions
