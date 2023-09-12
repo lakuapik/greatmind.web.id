@@ -11,7 +11,7 @@ client = SearchClient.create(
 
 index = client.init_index('articles')
 
-articles = sqlite.execute("SELECT * FROM articles ORDER BY id DESC LIMIT 1")
+articles = sqlite.execute("SELECT * FROM articles ORDER BY id DESC LIMIT 100")
 
 final_articles = []
 for article in articles:
