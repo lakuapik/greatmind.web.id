@@ -30,12 +30,12 @@ window.onload = function() {
         templates: {
           item: function(data) {
             return data.html`
-              <a class="aa-ItemWrapper" 
+              <a class="aa-ItemWrapper"
                 href="${window.location.protocol}//${window.location.host}/artikel/${data.item.title.replace(/\W+/g, '-').toLowerCase()}"
               >
                 <div class="aa-ItemContent" style="margin:0.5rem 0">
                   <div style="width:128px;height:100%">
-                    <img src="${data.item.cover}" alt="${data.item.title}" 
+                    <img src="${data.item.cover}" alt="Gambar Cover Artikel"
                       style="width:auto;height:100%;border-radius:0.8rem;object-fit:cover" />
                   </div>
                   <div class="aa-ItemContentBody">

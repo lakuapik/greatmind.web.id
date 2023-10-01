@@ -7,7 +7,7 @@ module.exports = function rssContent(article) {
 
   // add cover image on top of content
   const coverImg = staticallyImg(article.cover);
-  const cover = `<img src="${coverImg}" alt="${article.title}"
+  const cover = `<img src="${coverImg}" alt="Gambar Cover Artikel"
     style="border-radius:6px;margin:20px auto;object-fit:cover;" />`;
 
   // add original url after content
