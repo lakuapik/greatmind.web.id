@@ -18,6 +18,12 @@ hosted at [greatmind.web.id](https://greatmind.web.id).
 2. Crawl new articles with `python crawler.py --crawl-step-1`
 3. Crawl completing articles metadata with `python crawler.py --crawl-step-2`
 
+### Algolia Index
+
+1. Setup algolia search, get APP_ID and APP_KEY
+2. Export APP_ID and APP_KEY as environment variable
+3. Update index with `python algolia.py`
+
 ## Why and How
 
 Why and how this project got started in the first place:

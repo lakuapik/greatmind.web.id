@@ -23,6 +23,9 @@ jobs:
         run: python crawler.py --crawl-step-2
       - name: Algolia re-index
         run: python algolia.py
+        env:
+          ALGOLIA_APP_ID : ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
       - name: Commit changes
         run: |
           git config --global user.name github-actions
